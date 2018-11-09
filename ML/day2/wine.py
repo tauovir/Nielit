@@ -5,7 +5,7 @@ from sklearn.metrics import  accuracy_score,confusion_matrix
 import pandas as pd
 import  matplotlib.pyplot as plt
 
-data = pd.read_csv('/home/ai20/Desktop/workStatus/ML/day2/winequality-white-1.csv')
+data = pd.read_csv('/home/ai20/Desktop/workStatus/ML/day2/winequality-white-1.csv', delimiter = ",")
 #print data 
 ndraData = data.as_matrix()
 X = ndraData[:,0:11]

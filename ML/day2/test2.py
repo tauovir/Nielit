@@ -5,12 +5,8 @@ from sklearn.metrics import  accuracy_score,confusion_matrix
 import pandas as pd
 import  matplotlib.pyplot as plt
 
-data = pd.read_csv('/home/ai20/Desktop/common/ML/Day2/Questions/Immunotherapy.csv')
-#print data
-#======Load Data=======
-#print iris.data
-#Load Target Data======
-#print iris.target
+data = pd.read_csv('/home/ai20/Desktop/common/ML/Day2/Questions/Immunotherapy.csv',delimiter = ",")
+
 ndraData = data.as_matrix()
 X = ndraData[:,0:7]
 y =ndraData[:,7]
