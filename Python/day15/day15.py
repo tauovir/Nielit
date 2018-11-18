@@ -69,7 +69,7 @@ def isValidPassword(inputStr):
 @Description: This function used to identify whether email is valid or not
 '''     
 def isValidEmial(inputStr):
-    regexPattern = r'^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$'
+    regexPattern = r'^([0-9a-z_\.-]+)@([0-9a-z_\.-]+)\.([a-z0-9\.]{2,6})+$'
     try:
         patternObj = re.compile(regexPattern)
         print patternObj.pattern
