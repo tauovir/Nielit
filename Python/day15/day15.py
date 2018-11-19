@@ -78,13 +78,40 @@ def isValidEmial(inputStr):
         return False
     except Exception,e:
         print "Exception occure=",e
-        
+
+"""
+to replace all instances of one or more whitespace characters with a single space.
+"""
+def replaceSpace(inputStr):
+    regexPattern = ' '
+    try:
+        patternObj = re.compile(regexPattern)
+        result = re.sub(regexPattern,'', inputStr)
+        return result
+    except Exception,e:
+        print "Exception occure=",e
+
+def replaceNSpace(inputStr, nSpace=1):
+    regexPattern = ' '
+    replacestr = ''
+    i = 0
+    while i<nSpace:
+        replacestr = replacestr + ' '
+        i = i + 1
+    
+    try:
+        patternObj = re.compile(regexPattern)
+        result = re.sub(regexPattern,replacestr, inputStr)
+        return result
+    except Exception,e:
+        print "Exception occure=",e
+
 #print isInteger('80ddd')
 #print isFloat('8.520')              
 #print hasVowel('khan')  #not working
 #print checkDate('02-06-2018')
 #print isValidPassword('taukirKhaN115')
-print isValidEmial('taukir707@gmail.com')
+#print isValidEmial('taukir707@gmail.com')
 
 
 
