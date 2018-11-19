@@ -14,12 +14,9 @@ data['SibSp'] = data['SibSp'].fillna(round(np.mean(data['SibSp'])))
 data['Parch'] = data['Parch'].fillna(round(np.mean(data['Parch'])))
 data['Fare'] = data['Fare'].fillna(round(np.mean(data['Fare'])))
 
-
-#===================
-data = data.as_matrix()
-X = data[0:10,[5,6]]
-y = data[0:10,1]
-#print X
+print ((data['Sex']))
+genderList =  data['Sex'].tolist()
+data = data.as_matrix() # Convert it into matrix
 #======Label Data according to gender====
 
 servivedList = data[:,[4]]
@@ -27,19 +24,29 @@ servivedList = servivedList.tolist()
 le = preprocessing.LabelEncoder()
 list1 = [x[0] for x in servivedList]
 le.fit(list1)
-k=le.transform(["male", "female"])
-print k
+#k=le.transform(["male", "female"])
+k=le.transform(genderList)  #Convert gender value into numeric
+#print type(k)
+#========Assign numeric value to gender===========
+data[:,4] = k  #Assign k value
+#print data[0:,4]
+#==========
+X = data[0:,[4,5,6,7,9]]
+y = data[0:,1]
+y=y.astype('int')   # convert y object to int
+#print X
+
 
 #===========Train Data for Linear Regression==========
 
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2)
-print"X train===", X_train
-print"Ytrain===", y_train
-print(y_train.shape)
-print(X_train.shape)
+#print"X train===", X_train
+#print"Ytrain===", y_train
+#print(y_train.shape)
+#print(X_train.shape)
 lgl = LogisticRegression()
-lgl.fit(X_train,y_train) # Eror In this line
-#p = lgl.predict(X_test)
-#print p 
-#plt.scatter(y_test,p)
-#plt.show()
+lgl.fit(X_train,y_train) 
+p = lgl.predict(X_test)
+print p 
+plt.scatter(y_test,p)
+plt.show()
