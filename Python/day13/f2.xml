@@ -1,1 +1,27 @@
-<?xml version="1.0" ?><employees/>
+<?xml version="1.0" ?>
+<employees>
+<employee>
+<id>101</id>
+<name>Anil</name>
+<designation>scientist</designation>
+<salary>50000</salary>
+</employee>
+<employee>
+<id>102</id>
+<name>Mary</name>
+<designation>scieltist</designation>
+<salary>55000</salary>
+</employee>
+<employee>
+<id>103</id>
+<name>Raju</name>
+<designation>engineer</designation>
+<salary>60000</salary>
+</employee>
+<employee>
+<id>104</id>
+<name>Ravi</name>
+<designation>officer</designation>
+<salary>40000</salary>
+</employee>
+</employees>
