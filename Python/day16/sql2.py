@@ -6,21 +6,21 @@ class Record:
         name = self.name1.get()
         designation = self.desig.get()
         salary1= self.salary.get()
-        con = db.connect("127.0.0.1",'ai','ai','ai')
+        con = db.connect("localhost",'nielit','root','')
         cur = con.cursor()
         query ="insert into emp_ai20 (name,designation,salary)"  + " values('" + name +"','" + designation + "'," + str(salary1) + ")"
-        print query
+        #print query
         cur.execute(query)
         con.commit()
         con.close()
-        print "inserted 1 row:"
+       # print "inserted 1 row:"
         self.name1.set('')
         self.salary.set('')
         self.desig.set('')
         self.getData()
 
     def getData(self):
-        con = db.connect("127.0.0.1",'ai','ai','ai')
+        con = db.connect("localhost",'nielit','root','')
         cur = con.cursor()
         query ="Select * from emp_ai20"
         cur.execute(query)
