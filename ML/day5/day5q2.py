@@ -22,12 +22,12 @@ X = data[:,[0,1]]
 y = data[:,-1]
 #print y
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2)
-print X_test
+print(X_test)
 lr =  LinearRegression()
 lr.fit(X_train, y_train)
 
 p = lr.predict(X_test)  #Predict profit and loss with test data
-print p 
+print(p)
 plt.scatter(y_test,p)
 plt.show()
 
