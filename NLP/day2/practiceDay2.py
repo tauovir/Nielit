@@ -102,3 +102,20 @@ def gameSingular():
 #qa4()
 #gamePlural()
 gameSingular()
+=======
+def plular():
+    text = input("Enter Noune:")
+    blob = Word(text)
+    #======Pluralize
+    print(blob.pluralize())
+    #=====Singular======
+    print("Singular",blob.singularize())
+    
+def partOfSpeach():
+    para = input("Enter paragraph:")
+    blob = TextBlob(para)
+    print("Tags", blob.tags)
+
+#plular()
+partOfSpeach()
+

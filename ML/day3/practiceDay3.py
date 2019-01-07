@@ -22,15 +22,41 @@ def qa1():
     #Split data into taining set
     X_train,X_test,y_train,y_test = train_test_split(X, y, test_size = 0.3)
     lr = LinearRegression()
-    lr.fit(X_train, y_train)
+    lr.fit(X_test, y_test)
     p = lr.predict(X_test)
-   # print(p)
-    plt.scatter(X_test[:,[0]].ravel(),y_test)
-    plt.plot(X_test[:,[0]].ravel(),p,c = 'green')
+   #Get coefficient ans slop
+    m,b = slopIntercept(X_test[:,[0]].ravel(),y_test)
+    regressionLine = [(m*x) + b for x in X_test[:,[0]].ravel()]
+    print("Regression Line:",regressionLine)
+    plt.scatter(X_test[:,[0]].ravel(),y_test,color="red")
+    plt.xlabel("Independent Variable")
+    plt.ylabel("Dependent VAriable")
+    plt.plot(X_test[:,[0]].ravel(),regressionLine,c = 'green')
+    
     plt.show()
     print(X_test[:,[0]].ravel())
         
-#qa1()
+def slopIntercept(xVal, yVal):
+    '''
+    A linear regression line has the equation Y = mx+c, where m is the coefficient of independent variable and c is the intercept.
+    The mathematical formula to calculate slope (m) is:
+    (mean(x) * mean(y) – mean(x*y)) / ( mean (x)^2 – mean( x^2))
+    The formula to calculate intercept (c) is:
+    mean(y) – mean(x) * m
+    '''
+    #x = np.array(xVal)
+    #y = np.array(yVal)
+    x = xVal
+    y = yVal
+    #print(np.mean(x))
+    m = (np.mean(x)*np.mean(y) - np.mean(x*y)) / (np.mean(x)* np.mean(x) - np.mean(x*x))
+    m = round(m,2)
+    print("coefficent:",m)
+    b = (np.mean(y) - np.mean(x)) * m
+    return m,b
+
+
+qa1()
     #Question 2
 def loanPredict():
     dataset = pd.read_csv('loan.csv')
@@ -124,6 +150,6 @@ def qa6():
     print("******Report******")
     print(classification_report(y_test, p))
     
-qa6()
+#qa6()
      
 
