@@ -12,7 +12,7 @@ def plular():
 def partOfSpeach():
     para = input("Enter paragraph:")
     blob = TextBlob(para)
-    print("Tags", blob.tags)
+    print(blob.tags)
 
 #plular()
 partOfSpeach()

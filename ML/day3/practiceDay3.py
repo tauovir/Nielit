@@ -21,17 +21,20 @@ def qa1():
     y = dataset[:,-1]
     #Split data into taining set
     X_train,X_test,y_train,y_test = train_test_split(X, y, test_size = 0.3)
+    #Build Model
     lr = LinearRegression()
     lr.fit(X_test, y_test)
     p = lr.predict(X_test)
    #Get coefficient ans slop
-    m,b = slopIntercept(X_test[:,[0]].ravel(),y_test)
-    regressionLine = [(m*x) + b for x in X_test[:,[0]].ravel()]
-    print("Regression Line:",regressionLine)
-    plt.scatter(X_test[:,[0]].ravel(),y_test,color="red")
-    plt.xlabel("Independent Variable")
-    plt.ylabel("Dependent VAriable")
-    plt.plot(X_test[:,[0]].ravel(),regressionLine,c = 'green')
+    #m,b = slopIntercept(X_test[:,[0]].ravel(),y_test)
+    #regressionLine = [(m*x) + b for x in X_test[:,[0]].ravel()]
+    # print("Regression Line:",regressionLine)
+    # plt.scatter(X_test[:,[0]].ravel(),y_test,color="red")
+    # plt.xlabel("Independent Variable")
+    # plt.ylabel("Dependent VAriable")
+    # plt.plot(X_test[:,[0]].ravel(),regressionLine,c = 'green')
+    plt.scatter(y_test,p)
+    plt.show()
     
     plt.show()
     print(X_test[:,[0]].ravel())
@@ -150,6 +153,6 @@ def qa6():
     print("******Report******")
     print(classification_report(y_test, p))
     
-#qa6()
+qa6()
      
 

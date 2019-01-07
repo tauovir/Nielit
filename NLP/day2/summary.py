@@ -5,22 +5,22 @@ import random
 class Summary:
     def result(self):
         try:
-            fd = open(raw_input('enter file:'),'r')
+            fd = open(input('enter file:'),'r')
             para =  fd.read()
             self.showContent(para)
         except Exception as e:
-            print "Exception occure=",str(e)
+            print("Exception occure=",str(e))
         else:
             #print fd.read()
-            print ""
+           print("Else Block")
         finally:
             #fd.close()
-             print ""
+             print("Finally")
     def showContent(self,para):
         #print para
         blob = TextBlob(para)
-        print 'number of sentence:',str(len(blob.sentences))
-        print 'number of word:',str(len(blob.words))
+        print('number of sentence:',str(len(blob.sentences)))
+        print('number of word:',str(len(blob.words)))
         #self.getMainWords(blob)
         self.sumaryOfContent(blob)
         
@@ -32,7 +32,7 @@ class Summary:
            if (tag == 'NN') or (tag == 'NNS'):
                nounList.add(word)
         #print nounList
-        print ','.join(nounList)
+        print(','.join(nounList))
     def sumaryOfContent(self,blob):
         #print para
         nounList = list()
@@ -41,12 +41,12 @@ class Summary:
                nounList.append(word.lemmatize())
         
         wordFre = [nounList.count(w) for w in nounList]
-        print 'pair',str(zip(nounList,wordFre))
+        print('pair',str(zip(nounList,wordFre)))
         result = max(nounList, key=nounList.count)
        # print result
-        print "Summary of Content:"
+        print("Summary of Content:")
         word = Word(result)
-        print (word.pluralize())
+        print(word.pluralize())
         
 s1 = Summary()
 s1.result()

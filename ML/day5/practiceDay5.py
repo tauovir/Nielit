@@ -3,17 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import  accuracy_score,confusion_matrix,classification_report
+from sklearn.metrics import  mean_squared_error
 def qa1():
-    dataset = pd.read_csv("ex1.txt",delimiter = ',')
+    dataset = pd.read_csv("ex1.txt",delimiter = ',', skiprows=0)
+    print(dataset.head())
     dataMatrix = dataset.as_matrix()
-    X = dataMatrix[:,[0]]
-    X = X * 10000
-    y  = dataMatrix[:,[1]]
-    y = y * 10000
+    X = dataset.iloc[:,[0]].values
+    y = dataset.iloc[:,1].values
     print(dataset.head())
     print("*****Matrix*****")
-    print(y)
+    
     #plt.scatter(X, y)
     #plt.title("****Scatter Plot****")
     #plt.xlabel("city ")
@@ -27,15 +26,34 @@ def qa1():
     model.fit(X_train, y_train)
     x1 = np.array([[85172]])
     print(x1)
-    yPredictVal = model.predict(x1)
+    #yPredictVal = model.predict(x1)
     yPredictVal = model.predict(X_test)
+    print("Mean Swaure Error:",mean_squared_error(y_test, yPredictVal))
     print("*******Predicted Value******")
-    print(yPredictVal.reshape(-1,1))
-   # accuracy = accuracy_score(y_test,yPredictVal)
-    #plt.scatter(y_test.ravel(), yPredictVal.ravel())
-    #plt.show()
-    print(confusion_matrix(y_test.reshape(-1,1),yPredictVal.reshape(-1,1)))
+    plt.scatter(X_test,y_test)
+    plt.plot(X_test,yPredictVal)
+    plt.show()
     print("*****END Program***")
-    
+#qa1()
+def qa2():
+    dataset = pd.read_csv("ex2.txt",delimiter = ',', skiprows=1)
+    print(dataset.head())
+    X = dataset.iloc[:,[0,1]].values
+    y = dataset.iloc[:,2].values
+    #Split Data into Taring Set
+    X_train, X_test, y_train,y_test = train_test_split(X, y,test_size = 0.2)
+    print("Training Set")
+    print(y_train)
+    #Make Model Multi Linear Regression
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+    yPredVal = model.predict(X_test)
+    tesVal = model.predict([[1236,3]])
+    print("PredictVal:",tesVal)
+    #Visualize Data
+    plt.scatter(y_test,yPredVal)
+    plt.show()
 
-qa1()
+qa2()
+
+

@@ -19,13 +19,10 @@ ad = data[:,[2]]
 
 X = data[:,[0,1]]
 y = data[:,-1]
-print X
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.8)
 lgl = LogisticRegression()
-print"X tgrain", X_train
-print "Y train",y_train
+
 lgl.fit(X_train,y_train)
 p = lgl.predict(X_test)
-print p 
 plt.scatter(y_test,p)
 plt.show()

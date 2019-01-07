@@ -5,7 +5,7 @@ class Singular:
     def take(self):
         intext = input('enter noune=')
         blob = Word(intext)
-        print "=====Pluralize========"
+        print z"=====Pluralize========"
         print '%s => %s'%(intext, blob.pluralize())
         print "=====Singularize========"
         print '%s => %s'%(intext, blob.singularize())
