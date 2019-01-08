@@ -17,7 +17,7 @@ print(X.shape)
 n=len(X)
 X=X.reshape(n,-1)
 print(X.shape)
-#Get slice data for taring and test
+#Get slice data for traing and test
 X_train=X[:n//2]
 y_train=y[:n//2]
 X_test=X[n//2:]

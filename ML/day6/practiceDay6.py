@@ -6,11 +6,5 @@ from sklearn.metrics import classification_report,confusion_matrix
 data=load_digits()
 X=data.images
 y=data.target
+print(y)
 ilabels=list(zip(X,y))
-print(ilabels)
-for index,(image,label) in enumerate(ilabels[:4]):
-    plt.subplot(2,4,index+1)
-	plt.axis('off')
-	plt.imshow(image,cmap=plt.cm.gray_r,interpolation='nearest')
-    plt.title(label)
-plt.show()
